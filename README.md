@@ -26,3 +26,9 @@ aws s3 ls # Should now list buckets for other_user
 # Run a command with a different profile
 aws s3 ls --profile yetAnotherUser
 ```
+
+### General Useful Commands
+``` bash
+# What region is the default?
+aws configure get region
+```
