@@ -16,3 +16,13 @@ aws ec2 describe-instances --query 'Reservations[*].Instances[*].{Instance:Insta
 aws ec2 start-instances --instance-ids "string-id-1" "string-id-2"
 aws ec2 stop-instances --instance-ids "string-id-1" "string-id-2"
 ```
+
+### Profiles
+```bash
+# Temporarily switch profiles
+export AWS_PROFILE=otherUser
+aws s3 ls # Should now list buckets for other_user
+
+# Run a command with a different profile
+aws s3 ls --profile yetAnotherUser
+```
