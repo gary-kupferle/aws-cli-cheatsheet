@@ -32,3 +32,10 @@ aws s3 ls --profile yetAnotherUser
 # What region is the default?
 aws configure get region
 ```
+
+### Cloud Watch
+``` bash
+# Tail follow logs from a lambda function
+# Last argument is Log Group name from top of page in AWS console
+aws logs tail --follow /aws/lambda/kups-grid-maker-for-edx-learner
+```
