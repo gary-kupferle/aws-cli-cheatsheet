@@ -45,5 +45,9 @@ aws logs tail --follow /aws/lambda/kups-grid-maker-for-edx-learner
 # Get the Amplify boundary policyies (if any exist)
 aws iam list-policies --query 'Policies[?PolicyName==`AmplifyPermissionsBoundary`].Arn' --output text
 
+# Use previous `aws iam list-policies ...` command to set an environment variable and use it in `amplify init ...`
+boundary_policy=$(aws iam list-policies --query 'Policies[?PolicyName==`AmplifyPermissionsBoundary`].Arn' --output text)
+amplify init --permissions-boundary $boundary_policy
 
+#
 ```
