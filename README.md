@@ -39,3 +39,11 @@ aws configure get region
 # Last argument is Log Group name from top of page in AWS console
 aws logs tail --follow /aws/lambda/kups-grid-maker-for-edx-learner
 ```
+
+### Amplify and Cognito
+```bash
+# Get the Amplify boundary policyies (if any exist)
+aws iam list-policies --query 'Policies[?PolicyName==`AmplifyPermissionsBoundary`].Arn' --output text
+
+
+```
