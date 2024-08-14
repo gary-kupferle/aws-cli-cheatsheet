@@ -60,4 +60,22 @@ amplify publish         # will build all your local backend and frontend resourc
 # Pro tip:
 # Try "amplify add api" to create a backend API and then "amplify push" to deploy everything
 
+# If you used `amplify init` in a UI/front-end app, you will have an amplify-meta.json file that you
+# can use the following commands on:
+APP_CLIENT_ID_WEB=$(jq -r '.auth | .[keys[0]] | .output.AppClientIDWeb' ~/environment/react-amplified/amplify/backend/amplify-meta.json)
+
+USER_POOL_ID=$(jq -r '.auth | .[keys[0]] | .output.UserPoolId' ~/environment/react-amplified/amplify/backend/amplify-meta.json)
+
+printf "\n\nUserPoolId placeholder value: $USER_POOL_ID\n\nAppClientIDWeb placeholder value: $APP_CLIENT_ID_WEB\n\n"
+# if using SAM for lambda development, those env vars can in turn be used to update the template.yaml of the API
+as shown below
+before=$(cat ~/environment/api-backend-sam/template.yaml | head -41 | tail -7)
+update1=$(sed -i "s/REPLACE_WITH_USERPOOL_ID/$USER_POOL_ID/g" ~/environment/api-backend-sam/template.yaml)
+update2=$(sed -i "s/REPLACE_WITH_APP_CLIENT_ID_WEB/$APP_CLIENT_ID_WEB/g" ~/environment/api-backend-sam/template.yaml)
+after=$(cat ~/environment/api-backend-sam/template.yaml | head -41 | tail -7)
+
+printf "template.yaml --> code BEFORE update:\n\n$before; \n\ntemplate.yaml --> code AFTER update:\n\n $after\n\n"
+# end of Cognito/Amplify UI-API config collaboration
+
+
 ```
