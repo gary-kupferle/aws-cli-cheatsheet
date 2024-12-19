@@ -31,6 +31,21 @@ aws s3 ls --profile yetAnotherUser
 ``` bash
 # What region is the default?
 aws configure get region
+
+# List S3 buckets (and check if your SSO login/environment vars/default creds and profile are set where you think they are
+aws s3 ls
+```
+
+### API Gateway
+```bash
+# Get the id's and names of the current account's API Gateway (region and account must be setup previously)
+aws apigateway get-rest-apis | grep -E '"id"|"name"'
+
+# Deploy an API Gateway stage
+aws apigateway create-deployment --rest-api-id <api-id> --stage-name <stage-name>
+
+# API Gateway - verify a deployment/list an API's stages
+aws apigateway get-stages --rest-api-id <api-id>
 ```
 
 ### Cloud Watch
