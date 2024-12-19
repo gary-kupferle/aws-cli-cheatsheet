@@ -72,7 +72,8 @@ aws s3 ls
 ### API Gateway
 ```bash
 # Get the id's and names of the current account's API Gateway (region and account must be setup previously)
-aws apigateway get-rest-apis | grep -E '"id"|"name"'
+# -E is for 'extended' regex
+aws apigateway get-rest-apis | grep -E 'id|name'
 ```
 
 ```bash
