@@ -54,7 +54,8 @@ export AWS_PROFILE=otherUser
 aws s3 ls # Should now list buckets for other_user
 ```
 
-```bash# Run a command with a different profile
+```bash
+# Run a command with a different profile
 aws s3 ls --profile yetAnotherUser
 ```
 
@@ -97,7 +98,8 @@ aws logs tail --follow /aws/lambda/kups-grid-maker-for-edx-learner
 aws iam list-policies --query 'Policies[?PolicyName==`AmplifyPermissionsBoundary`].Arn' --output text
 ```
 
-```bash# Use previous `aws iam list-policies ...` command to set an environment variable and use it in `amplify init ...`
+```bash
+# Use previous `aws iam list-policies ...` command to set an environment variable and use it in `amplify init ...`
 boundary_policy=$(aws iam list-policies --query 'Policies[?PolicyName==`AmplifyPermissionsBoundary`].Arn' --output text)
 amplify init --permissions-boundary $boundary_policy
 ```
