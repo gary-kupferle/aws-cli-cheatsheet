@@ -40,10 +40,14 @@ aws s3 ls
 ```bash
 # Get the id's and names of the current account's API Gateway (region and account must be setup previously)
 aws apigateway get-rest-apis | grep -E '"id"|"name"'
+```
 
+```bash
 # Deploy an API Gateway stage
 aws apigateway create-deployment --rest-api-id <api-id> --stage-name <stage-name>
+```
 
+```bash
 # API Gateway - verify a deployment/list an API's stages
 aws apigateway get-stages --rest-api-id <api-id>
 ```
