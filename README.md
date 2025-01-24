@@ -1,5 +1,43 @@
 #AWS CLI commands I often use.
 
+### General Useful Commands
+``` bash
+# What region is the default?
+aws configure get region
+```
+
+```bash
+# List S3 buckets (and check if your SSO login/environment vars/default creds and profile are set where you think they are
+aws s3 ls
+```
+
+### Profiles
+```bash
+# Temporarily switch profiles
+export AWS_PROFILE=otherUser
+aws s3 ls # Should now list buckets for other_user
+```
+
+```bash
+# Run a command with a different profile
+aws s3 ls --profile yetAnotherUser
+```
+
+### S3
+```bash
+# List S3 buckets 
+aws s3 ls
+
+# List content of a specific bucket
+aws s3 ls <bucket-name>
+
+# Delete all objects in a bucket (be careful)
+aws s3 rm s3://<bucket-name> --recursive
+
+# Upload all content from a folder into a bucket
+aws s3 sync <local dir path> s3://<bucket-name>
+```
+
 ### EC2 instances
 ```bash
 # list all instances
@@ -47,27 +85,6 @@ curl -v -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta
 curl -v -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/user-data
 ```
 
-### Profiles
-```bash
-# Temporarily switch profiles
-export AWS_PROFILE=otherUser
-aws s3 ls # Should now list buckets for other_user
-```
-
-```bash
-# Run a command with a different profile
-aws s3 ls --profile yetAnotherUser
-```
-
-### General Useful Commands
-``` bash
-# What region is the default?
-aws configure get region
-```
-
-```bash# List S3 buckets (and check if your SSO login/environment vars/default creds and profile are set where you think they are
-aws s3 ls
-```
 
 ### API Gateway
 ```bash
