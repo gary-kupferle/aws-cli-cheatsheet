@@ -27,13 +27,19 @@ aws s3 ls --profile yetAnotherUser
 ```bash
 # List S3 buckets 
 aws s3 ls
+```
 
+```bash
 # List content of a specific bucket
 aws s3 ls <bucket-name>
+```
 
+```bash
 # Delete all objects in a bucket (be careful)
 aws s3 rm s3://<bucket-name> --recursive
+```
 
+```bash
 # Upload all content from a folder into a bucket
 aws s3 sync <local dir path> s3://<bucket-name>
 ```
