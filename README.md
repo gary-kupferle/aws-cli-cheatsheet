@@ -40,6 +40,11 @@ aws s3 rm s3://<bucket-name> --recursive
 ```
 
 ```bash
+# Delete the bucket (must be empty)
+aws s3api delete-bucket --bucket <bucket-name>
+```
+
+```bash
 # Upload all content from a folder into a bucket
 aws s3 sync <local dir path> s3://<bucket-name>
 ```
