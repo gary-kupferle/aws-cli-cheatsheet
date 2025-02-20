@@ -5,6 +5,11 @@
 # What region is the default?
 aws configure get region
 ```
+``` bash
+# What account are aws commands running under (either default or environment vars with temp keys and session token)?
+aws configure get region
+aws sts get-caller-identity --query "Account" --output text
+```
 
 ```bash
 # List S3 buckets (and check if your SSO login/environment vars/default creds and profile are set where you think they are
