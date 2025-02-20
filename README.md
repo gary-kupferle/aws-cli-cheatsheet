@@ -6,8 +6,8 @@
 aws configure get region
 ```
 ``` bash
-# What account are aws commands running under (either default or environment vars with temp keys and session token)?
-aws configure get region
+# What account are aws commands running under
+# (either default or environment vars with temp keys and session token)?
 aws sts get-caller-identity --query "Account" --output text
 ```
 
