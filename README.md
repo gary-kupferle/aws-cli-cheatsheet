@@ -50,6 +50,11 @@ aws s3api delete-bucket --bucket <bucket-name>
 ```
 
 ```bash
+# Copy a local file into a bucket
+aws s3 cp <local file> s3://<bucket-name>
+```
+
+```bash
 # Upload all content from a folder into a bucket
 aws s3 sync <local dir path> s3://<bucket-name>
 ```
